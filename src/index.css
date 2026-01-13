@@ -1,3 +1,4 @@
+/* Import Poppins font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;900&display=swap");
 
 @tailwind base;
@@ -5,15 +6,51 @@
 @tailwind utilities;
 
 @layer base {
+	/* Apply Poppins font globally */
 	html {
 		@apply font-Poppins;
 	}
+
+	/* Remove default outline and border from form elements */
 	input,
 	button {
 		@apply !outline-none border-0;
 		font-family: inherit;
 	}
+
+	/* Style placeholder text */
 	::placeholder {
-		@apply !text-gray-700;
+		@apply text-gray-500 dark:text-gray-400;
+	}
+}
+
+@layer utilities {
+	/* Custom animations */
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+
+	.animate-fadeIn {
+		animation: fadeIn 0.5s ease-out;
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
 	}
 }
